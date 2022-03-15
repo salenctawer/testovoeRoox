@@ -3,6 +3,8 @@ import { ElementsType } from "../types/types"
 
 
 const EDITING_ELEMENT = 'EDITING_ELEMENT'
+const SORT_CITY = 'SORT_CITY'
+const SORT_COMPANY = 'SORT_COMPANY'
 
 let initialState = {
     elements:[
@@ -261,12 +263,26 @@ const listReducer = (state=initialState, action:ActionsTypes) =>{
                 editing:element
             }
         }
+        case SORT_CITY:{
+          let object = action.array
+          return{
+            ...state,
+            elements: [...object]
+          }
+        }
+        case SORT_COMPANY:{
+          let object = action.array
+          return{
+            ...state,
+            elements: [...object]
+          }
+        }
         default:
             return state
     }
 }
 
-type ActionsTypes = editingElementType
+type ActionsTypes = editingElementType | sortCityType | sortCompanyType
 
 export type editingElementType = {
     type: typeof EDITING_ELEMENT
@@ -279,6 +295,16 @@ export type editingElementType = {
     phone: string,
     website: string,
     id: number
+}
+
+export type sortCityType = {
+  type: typeof SORT_CITY,
+  array: Array<ElementsType>
+}
+
+export type sortCompanyType = {
+  type: typeof SORT_COMPANY,
+  array: Array<ElementsType>
 }
 
 export const editingElement = (id:number, name:string, userName:string, email:string, addressStreet:string, 
@@ -295,6 +321,20 @@ export const editingElement = (id:number, name:string, userName:string, email:st
         website: website,
         id: id
     }
+}
+
+export const sortCity = (array:Array<ElementsType>) =>{
+  return{
+    type: SORT_CITY,
+    array:array
+  }
+}
+
+export const sortCompany = (array:Array<ElementsType>) =>{
+  return{
+    type: SORT_COMPANY,
+    array:array
+  }
 }
 
 export default listReducer

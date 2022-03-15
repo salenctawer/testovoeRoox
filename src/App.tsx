@@ -3,12 +3,12 @@ import './App.css';
 import { Route, Routes} from 'react-router-dom';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import ListContainer from './components/List/ListContainer';
-import Sidebar from './components/Sidebar/Sidebar';
+import SidebarContainer from './components/Sidebar/SidebarContainer';
 
 function App() {
   return (
     <div className="App">
-      <Sidebar />
+      <SidebarContainer />
       <Routes>
         <Route path='/profile' element={<ProfileContainer />}/>
         <Route path='/' element={<ListContainer />}/>

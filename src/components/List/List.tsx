@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from './List.module.scss'
 import { Link} from "react-router-dom";
 import { MapDispatchToPropsType, mapStateToPropsType } from "./ListContainer";
@@ -7,15 +7,24 @@ import { MapDispatchToPropsType, mapStateToPropsType } from "./ListContainer";
 type PropsType = mapStateToPropsType & MapDispatchToPropsType
 
 const List: React.FC<PropsType> = (props) =>{
+    const [sort, setSort] = useState(true)
+    let elements = props.elements
     const handleClickLink = (id:number, name:string, userName:string, email:string, addressStreet:string, 
         addressCity:string, addressZipcode:string, phone:string, website:string) =>{
         props.editingElement(id, name, userName, email, addressStreet, 
             addressCity, addressZipcode, phone, website)
     }
+    const sortName = () =>{
+        elements.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
+    }
+    if (sort){
+        sortName()
+        setSort(false)
+    }
     return(
         <div className={styles.list}>
             <h1 className={styles.list__title}>Список пользователей</h1>
-            {props.elements.map((item)=>
+            {elements.map((item)=>
                 <div className={styles.block} key={item.id}>
                     <div className={styles.block__container}>
                         <span className={styles.block__description}>ФИО:</span>
