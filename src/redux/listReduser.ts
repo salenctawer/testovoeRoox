@@ -1,6 +1,8 @@
+import { AppStateType } from './store';
 
 import { ElementsType } from "../types/types"
 import { API } from '../api/api'
+import { ThunkAction } from "redux-thunk"
 
 
 const EDITING_ELEMENT = 'EDITING_ELEMENT'
@@ -133,8 +135,8 @@ export const addElements = (array:Array<ElementsType>):addElementsType =>{
   }
 }
 
-export const getUsersThunk = () =>{
-  return(dispatch: any) =>{
+export const getUsersThunk = ():ThunkAction<void, AppStateType, unknown, ActionsTypes> =>{
+  return(dispatch) =>{
     API.getUsers()
       .then(response=>{
         dispatch(addElements(response.data))
