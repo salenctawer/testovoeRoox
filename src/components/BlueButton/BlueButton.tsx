@@ -3,7 +3,7 @@ import styles from './BlueButton.module.scss'
 
 const BlueButton = (props:any) =>{
     return(
-        <button className={styles.button}>{props.title}</button>
+        <button className={styles.button} onClick={props.onClick}>{props.title}</button>
     )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes} from 'react-router-dom';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import ListContainer from './components/List/ListContainer';
 import Sidebar from './components/Sidebar/Sidebar';
 
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Sidebar />
       <Routes>
-        <Route path='/profile' element={<Profile />}/>
+        <Route path='/profile' element={<ProfileContainer />}/>
         <Route path='/' element={<ListContainer />}/>
       </Routes>
     </div>

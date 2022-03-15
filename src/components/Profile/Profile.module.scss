@@ -1,7 +1,93 @@
 .profile{
-    display: flex;
+    padding: 19px 62px 25px 34px;
     &__header{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+    }
+    &__button{
+        background: #4B51EF;
+        border-radius: 5px;
+        margin-top: 10.5px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: #FFFFFF;
+        outline: none;
+        border: 0;
+        padding: 5px 15px 5px 15px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #FFFFFF;
+    border: 1px solid #F3F3F3;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 20px 6px 19px 12px;
+    box-sizing: border-box;
+    &__label{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 9px;
+        color: #000000;
+        margin-bottom: 0;
+    }
+    &__input{
+        background: #FFFFFF;
+        border: 1px solid #D8D8D8;
+        box-sizing: border-box;
+        border-radius: 5px;
+        padding: 5px 138px 5px 10px;
+        box-sizing: border-box;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 12px;
+        color: rgba(0, 0, 0, 0.3);
+        margin-top: 3px;
+        &:focus{
+            outline: none;
+        }
+        &:enabled{
+            color: #000000;
+        }
+    }
+    &__textarea{
+        background: #FFFFFF;
+        border: 1px solid #D8D8D8;
+        box-sizing: border-box;
+        border-radius: 5px;
+        width: 420px;
+        height: 55px;
+        resize: none;
+        margin-top: 3px;
+        &:focus{
+            outline: none;
+        }
+    }
+    &__button{
+        background: #AFAFAF;
+        border-radius: 5px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: #FFFFFF;
+        outline: none;
+        padding: 5px 5px 5px 5px;
+        box-sizing: border-box;
+        border: 0;
+        &:enabled{
+            background: #52CF4F;
+        }
     }
 }
