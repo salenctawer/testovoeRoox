@@ -66,6 +66,27 @@
         line-height: 12px;
         color: rgba(0, 0, 0, 0.3);
         margin-top: 3px;
+        &_error{
+            background: #FFFFFF;
+            border: 1px solid red;
+            box-sizing: border-box;
+            border-radius: 5px;
+            padding: 5px 138px 5px 10px;
+            box-sizing: border-box;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 12px;
+            color: rgba(0, 0, 0, 0.3);
+            margin-top: 3px;
+            &:focus{
+                outline: none;
+            }
+            &:enabled{
+                color: #000000;
+            }
+        }
         &:focus{
             outline: none;
         }

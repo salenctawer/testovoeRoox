@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 const Profile = (props:any) =>{
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState:{errors} } = useForm();
     const [disabled, setDisabled] = useState(true)
     return(
         <div className={styles.profile}>
@@ -16,47 +16,51 @@ const Profile = (props:any) =>{
             <form className={styles.form} onSubmit={handleSubmit((data) => console.log(JSON.stringify(data)))}>
                 <div className={styles.form__container}>
                     <p className={styles.form__label}>Name</p>
-                    <input className={styles.form__input} defaultValue={props.element.name} {...register('name',{
+                    <input className={(errors.name? styles.form__input_error : styles.form__input)} defaultValue={props.element.name} {...register('name',{
                         disabled:disabled,
                         required: true
                     })} />
                     <p className={styles.form__label}>User name</p>
-                    <input className={styles.form__input} {...register('userName',{
+                    <input className={(errors.userName? styles.form__input_error : styles.form__input)} {...register('userName',{
                         disabled:disabled,
                         required: true
                     })} defaultValue={props.element.userName}/>
                     <p className={styles.form__label}>E-mail</p>
-                    <input className={styles.form__input} {...register('email',{
+                    <input type ='email' className={(errors.email? styles.form__input_error : styles.form__input)} {...register('email',{
+                        pattern:{
+                            value: /^([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})$/,
+                            message:''
+                        },
                         disabled:disabled,
                         required: true
                     }
                     )} defaultValue={props.element.email}/>
                     <p className={styles.form__label}>Street</p>
-                    <input className={styles.form__input} {...register('street',{
+                    <input className={(errors.street? styles.form__input_error : styles.form__input)} {...register('street',{
                         disabled: disabled,
                         required: true
                     })} defaultValue={props.element.addressStreet}/>
                     <p className={styles.form__label}>City</p>
-                    <input className={styles.form__input} {...register('city',{
+                    <input className={(errors.city? styles.form__input_error : styles.form__input)} {...register('city',{
                         disabled:disabled,
                         required: true
                     })} defaultValue={props.element.addressCity}/>
                     <p className={styles.form__label}>Zip code</p>
-                    <input className={styles.form__input} {...register('zipCode',{
+                    <input className={(errors.zipCode? styles.form__input_error : styles.form__input)} {...register('zipCode',{
                         disabled:disabled,
                         required: true
                     })} defaultValue={props.element.addressZipcode}/>
                     <p className={styles.form__label}>Phone</p>
-                    <input type='tel' className={styles.form__input} {...register('phone',{
+                    <input type='tel' className={(errors.phone? styles.form__input_error : styles.form__input)} {...register('phone',{
                         pattern:{
                             value: /^([\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2})$/,
-                            message:'Введите корректный номер телефона'
+                            message:''
                         },
                         disabled:disabled,
                         required: true
                     })} defaultValue={props.element.phone}/>
                     <p className={styles.form__label}>Website</p>
-                    <input className={styles.form__input} {...register('website',{
+                    <input className={(errors.website? styles.form__input_error : styles.form__input)} {...register('website',{
                         disabled:disabled,
                         required: true
                     })} defaultValue={props.element.website}/>
