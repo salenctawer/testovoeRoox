@@ -10,55 +10,61 @@ const Profile = (props:any) =>{
     return(
         <div className={styles.profile}>
             <div className={styles.profile__header}>
-                <h1>Профиль пользователя</h1>
+                <h1 className={styles.profile__title}>Профиль пользователя</h1>
                 <BlueButton className={styles.profile__button} onClick={()=>setDisabled(false)} title={'Редактировать'}/>
             </div>
-            <form className={styles.form}>
-                <p className={styles.form__label}>Name</p>
-                <input className={styles.form__input} defaultValue={props.element.name} {...register('name',{
-                    disabled:disabled,
-                    required: true
-                })} />
-                <p className={styles.form__label}>User name</p>
-                <input className={styles.form__input} {...register('userName',{
-                    disabled:disabled,
-                    required: true
-                })} defaultValue={props.element.userName}/>
-                <p className={styles.form__label}>E-mail</p>
-                <input className={styles.form__input} {...register('email',{
-                    disabled:disabled,
-                    required: true
-                }
-                )} defaultValue={props.element.email}/>
-                <p className={styles.form__label}>Street</p>
-                <input className={styles.form__input} {...register('street',{
-                    disabled: disabled,
-                    required: true
-                })} defaultValue={props.element.addressStreet}/>
-                <p className={styles.form__label}>City</p>
-                <input className={styles.form__input} {...register('city',{
-                    disabled:disabled,
-                    required: true
-                })} defaultValue={props.element.addressCity}/>
-                <p className={styles.form__label}>Zip code</p>
-                <input className={styles.form__input} {...register('zipCode',{
-                    disabled:disabled,
-                    required: true
-                })} defaultValue={props.element.addressZipcode}/>
-                <p className={styles.form__label}>Phone</p>
-                <input className={styles.form__input} {...register('phone',{
-                    disabled:disabled,
-                    required: true
-                })} defaultValue={props.element.phone}/>
-                <p className={styles.form__label}>Website</p>
-                <input className={styles.form__input} {...register('website',{
-                    disabled:disabled,
-                    required: true
-                })} defaultValue={props.element.website}/>
-                <p className={styles.form__label}>Comment</p>
-                <textarea className={styles.form__textarea} {...register("Comment",{
-                    disabled:disabled
-                })} placeholder="About you" />
+            <form className={styles.form} onSubmit={handleSubmit((data) => console.log(JSON.stringify(data)))}>
+                <div className={styles.form__container}>
+                    <p className={styles.form__label}>Name</p>
+                    <input className={styles.form__input} defaultValue={props.element.name} {...register('name',{
+                        disabled:disabled,
+                        required: true
+                    })} />
+                    <p className={styles.form__label}>User name</p>
+                    <input className={styles.form__input} {...register('userName',{
+                        disabled:disabled,
+                        required: true
+                    })} defaultValue={props.element.userName}/>
+                    <p className={styles.form__label}>E-mail</p>
+                    <input className={styles.form__input} {...register('email',{
+                        disabled:disabled,
+                        required: true
+                    }
+                    )} defaultValue={props.element.email}/>
+                    <p className={styles.form__label}>Street</p>
+                    <input className={styles.form__input} {...register('street',{
+                        disabled: disabled,
+                        required: true
+                    })} defaultValue={props.element.addressStreet}/>
+                    <p className={styles.form__label}>City</p>
+                    <input className={styles.form__input} {...register('city',{
+                        disabled:disabled,
+                        required: true
+                    })} defaultValue={props.element.addressCity}/>
+                    <p className={styles.form__label}>Zip code</p>
+                    <input className={styles.form__input} {...register('zipCode',{
+                        disabled:disabled,
+                        required: true
+                    })} defaultValue={props.element.addressZipcode}/>
+                    <p className={styles.form__label}>Phone</p>
+                    <input type='tel' className={styles.form__input} {...register('phone',{
+                        pattern:{
+                            value: /^([\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2})$/,
+                            message:'Введите корректный номер телефона'
+                        },
+                        disabled:disabled,
+                        required: true
+                    })} defaultValue={props.element.phone}/>
+                    <p className={styles.form__label}>Website</p>
+                    <input className={styles.form__input} {...register('website',{
+                        disabled:disabled,
+                        required: true
+                    })} defaultValue={props.element.website}/>
+                    <p className={styles.form__label}>Comment</p>
+                    <textarea className={styles.form__textarea} {...register("Comment",{
+                        disabled:disabled
+                    })} placeholder="Comment" />
+                </div>
                 <input className={styles.form__button} type='submit' disabled={disabled}/>
             </form>
         </div>
