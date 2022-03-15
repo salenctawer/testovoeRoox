@@ -1,6 +1,8 @@
 
 
 
+const EDITING_ELEMENT = 'EDITING_ELEMENT'
+
 let initialState = {
     elements:[
         {
@@ -233,15 +235,50 @@ let initialState = {
               "bs": "target end-to-end models"
             }
           }
-    ]
+    ],
+    editing:{
+        id: 0,
+        name: '',
+        userName:'',
+        email:'',
+        addressStreet: '',
+        addressCity:'',
+        addressZipcode:'',
+        phone:'',
+        website:''
+    }
 }
 
 const listReducer = (state=initialState, action:any) =>{
     switch(action.type){
+        case EDITING_ELEMENT:{
+            let element =  state.editing
+            element = {id: action.id, name: action.name, userName: action.userName, email: action.email, addressStreet: action.addressStreet, addressCity: action.addressCity,
+                addressZipcode: action.addressZipcode, phone: action.phone, website: action.website}
+            return{
+                ...state,
+                editing:element
+            }
+        }
         default:
             return state
     }
 }
 
+export const editingElement = (id:number, name:string, userName:string, email:string, addressStreet:string, 
+    addressCity:string, addressZipcode:string, phone:string, website:string) =>{
+    return{
+        type: EDITING_ELEMENT,
+        name: name,
+        userName: userName,
+        email: email,
+        addressCity: addressCity,
+        addressStreet: addressStreet,
+        addressZipcode: addressZipcode,
+        phone: phone,
+        website: website,
+        id: id
+    }
+}
 
 export default listReducer
