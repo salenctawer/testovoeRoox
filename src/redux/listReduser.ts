@@ -1,3 +1,4 @@
+import { ElementsType } from "../types/types"
 
 
 
@@ -235,21 +236,21 @@ let initialState = {
               "bs": "target end-to-end models"
             }
           }
-    ],
+    ] as Array<ElementsType>,
     editing:{
-        id: 0,
-        name: '',
-        userName:'',
-        email:'',
-        addressStreet: '',
-        addressCity:'',
-        addressZipcode:'',
-        phone:'',
-        website:''
+        id: 0 as number,
+        name: '' as string,
+        userName:'' as string,
+        email:'' as string,
+        addressStreet: '' as string,
+        addressCity:'' as string,
+        addressZipcode:'' as string,
+        phone:'' as string,
+        website:'' as string
     }
 }
 
-const listReducer = (state=initialState, action:any) =>{
+const listReducer = (state=initialState, action:ActionsTypes) =>{
     switch(action.type){
         case EDITING_ELEMENT:{
             let element =  state.editing
@@ -265,8 +266,23 @@ const listReducer = (state=initialState, action:any) =>{
     }
 }
 
+type ActionsTypes = editingElementType
+
+export type editingElementType = {
+    type: typeof EDITING_ELEMENT
+    name: string,
+    userName: string,
+    email: string,
+    addressCity: string,
+    addressStreet: string,
+    addressZipcode: string,
+    phone: string,
+    website: string,
+    id: number
+}
+
 export const editingElement = (id:number, name:string, userName:string, email:string, addressStreet:string, 
-    addressCity:string, addressZipcode:string, phone:string, website:string) =>{
+    addressCity:string, addressZipcode:string, phone:string, website:string): editingElementType =>{
     return{
         type: EDITING_ELEMENT,
         name: name,
