@@ -1,5 +1,6 @@
 .list{
     padding: 19px 62px 25px 34px;
+    height: 100%;
     &__title{
         font-family: 'Roboto';
         font-style: normal;
@@ -7,6 +8,9 @@
         font-size: 14px;
         line-height: 16px;
         color: #000000;
+    }
+    &__paragraph{
+        text-align: right;
     }
 }
 .block{
