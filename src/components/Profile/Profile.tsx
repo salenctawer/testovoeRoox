@@ -3,8 +3,11 @@ import BlueButton from "../BlueButton/BlueButton";
 import styles from './Profile.module.scss'
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { mapStateToPropsType } from "./ProfileContainer";
 
-const Profile = (props:any) =>{
+type PropsType = mapStateToPropsType
+
+const Profile: React.FC<PropsType> = (props) =>{
     const { register, handleSubmit, formState:{errors} } = useForm();
     const [disabled, setDisabled] = useState(true)
     return(

@@ -1,8 +1,12 @@
 import React from "react";
 import styles from './List.module.scss'
 import { Link} from "react-router-dom";
+import { MapDispatchToPropsType, mapStateToPropsType } from "./ListContainer";
 
-const List = (props:any) =>{
+
+type PropsType = mapStateToPropsType & MapDispatchToPropsType
+
+const List: React.FC<PropsType> = (props) =>{
     const handleClickLink = (id:number, name:string, userName:string, email:string, addressStreet:string, 
         addressCity:string, addressZipcode:string, phone:string, website:string) =>{
         props.editingElement(id, name, userName, email, addressStreet, 
@@ -11,7 +15,7 @@ const List = (props:any) =>{
     return(
         <div className={styles.list}>
             <h1 className={styles.list__title}>Список пользователей</h1>
-            {props.elements.map((item:any)=>
+            {props.elements.map((item)=>
                 <div className={styles.block} key={item.id}>
                     <div className={styles.block__container}>
                         <span className={styles.block__description}>ФИО:</span>
